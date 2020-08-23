@@ -76,12 +76,11 @@ jobs:
 
     - name: Patch
       run: |
-        cd openwrt
-        cd target/linux/ramips/patches-4.14
+        cd openwrt/target/linux/ramips/patches-4.14
         wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/patches-4.14/500-hack-mt76x8-pinctrl-esdmode.patch
-        cd ../dts
+        cd openwrt/target/linux/ramips/dts
         rm -rf mt7628an_hiwifi_hc5661a.dts && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/dts/mt7628an_hiwifi_hc5661a.dts
-        cd ../image
+        cd openwrt/target/linux/ramips/image
         rm -rf mt76x8.mk && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/image/mt76x8.mk
 
     - name: Update feeds
