@@ -83,10 +83,7 @@ jobs:
         rm -rf mt7628an_hiwifi_hc5661a.dts && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/dts/mt7628an_hiwifi_hc5661a.dts
         cd ../image
         rm -rf mt76x8.mk && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/image/mt76x8.mk
-        
-    - name: Makeclean
-      run: cd openwrt && make clean
-        
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
