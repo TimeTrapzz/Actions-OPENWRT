@@ -25,13 +25,13 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
-  SSH_ACTIONS: false
+  SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -73,16 +73,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
-    - name: Patch
-      run: |
-        cd openwrt
-        cd target/linux/ramips/patches-4.14
-        wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/patches-4.14/500-hack-mt76x8-pinctrl-esdmode.patch
-        cd ../dts
-        rm -rf mt7628an_hiwifi_hc5661a.dts && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/dts/mt7628an_hiwifi_hc5661a.dts
-        cd ../image
-        rm -rf mt76x8.mk && wget https://github.com/LGA1150/openwrt/raw/exp/target/linux/ramips/image/mt76x8.mk
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
