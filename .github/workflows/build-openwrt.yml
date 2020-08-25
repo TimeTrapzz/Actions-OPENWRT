@@ -25,7 +25,7 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/LGA1150/openwrt.git
+  REPO_URL: https://github.com/TimeTrapzz/openwrt.git
   REPO_BRANCH: exp
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -100,6 +100,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        make download -j8
 
     - name: Compile the firmware
       id: compile
